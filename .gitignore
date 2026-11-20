@@ -18,6 +18,8 @@
 /.zed
 /auth.json
 /database/*.sqlite
+/backups/*
+!/backups/.gitkeep
 /node_modules
 /public/build
 /public/hot

@@ -7,7 +7,24 @@ use App\Http\Controllers\Api\Ciudadano\ZonaController as ZonaCiudadano;
 use App\Http\Controllers\Api\Conductor\AccesoController;
 use App\Http\Controllers\Api\Conductor\ProgramacionController;
 use App\Http\Controllers\Api\Conductor\RecorridoController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/health', function () {
+    try {
+        DB::select('SELECT 1');
+
+        return response()->json([
+            'status' => 'ok',
+            'database' => 'ok',
+        ]);
+    } catch (\Throwable) {
+        return response()->json([
+            'status' => 'degraded',
+            'database' => 'error',
+        ], 503);
+    }
+});
 
 /*
 | API de la app móvil del conductor (Avance 6). Todas las rutas quedan bajo /api/conductor.
