@@ -39,6 +39,16 @@ Después de ajustar `.env`, ejecuta `docker compose up -d --force-recreate app w
 
 Las dos aplicaciones están en repositorios distintos. Compila sus APK mediante sus workflows de GitHub Actions, con `API_URL` apuntando a la URL HTTPS verificada del puerto 8080. También existe configuración manual del servidor en el inicio de sesión de las aplicaciones.
 
+URL base definitiva de esta sesión: `https://glowing-spoon-qw4j6rv75vx24jq9-8080.app.github.dev`
+
+Configure `API_URL` en ambas aplicaciones como:
+
+```text
+https://glowing-spoon-qw4j6rv75vx24jq9-8080.app.github.dev
+```
+
+No incluya `/api` al final de `API_URL`; la aplicación debe añadir sus rutas `/api/conductor/...` o `/api/ciudadano/...`.
+
 No recompiles APK hasta comprobar que la API responde desde Internet y que el puerto es realmente público.
 
 ## 5. Limitación crítica
